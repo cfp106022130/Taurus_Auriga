@@ -1,7 +1,3 @@
-FZTau	29	7	23	7
-HNTau	29	3	<15	None
-ISTau	30	3	<20	None
-JH112	30	10	<18	None
 FMTau	32	8	<36	None
 GKTau	33	7	<21	None
 IPTau	34	5	16	5
