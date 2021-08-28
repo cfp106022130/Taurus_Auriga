@@ -19,6 +19,8 @@ Again, the cell plots the positions of targets but with different colors corresp
 In the fourth to seventh cell, we used the KD-tree algorithm to construct the minimun spanning tree of the 47 targets by the seperation of their celestial coordinates. 
 The tree is constructed by the following steps: 
 First, choose a target with index ***u*** as the first vertex to add in the tree. 
-Then, use KDTree.query to list the targets in ascending order of distance to the first vertex. The nearest target will be the next vertex to add in the tree. 
-The 
+Next, use KDTree.query to list the targets in ascending order of distance to the first vertex. The nearest target will be the next vertex to add in the tree. 
+The program will draw a line on the first plot between the first vertex ***u*** and the next vertex, which is the branch of the tree.
+Let the variable ***u*** be the next vertex and end the first loop. The process of finding the nearest target will iterate to add vertices and branches. 
+
 
