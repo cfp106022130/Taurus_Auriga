@@ -18,9 +18,10 @@ This process was done by our personal judgement, and we wrote the target names a
 Again, the cell plots the positions of targets but with different colors corresponding to different groups and the transparency corresponding to numbers of scans. <br />
 In the fourth to seventh cell, we used the KD-tree algorithm to construct the minimun spanning tree of the 47 targets by the seperation of their celestial coordinates. 
 The tree is constructed by the following steps: 
-First, choose a target with index ***u*** as the first vertex to add in the tree. 
-Next, use KDTree.query to list the targets in ascending order of distance to the first vertex. The nearest target will be the next vertex to add in the tree. 
-The program will draw a line on the first plot between the first vertex ***u*** and the next vertex, which is the branch of the tree.
-Let the variable ***u*** be the next vertex and end the first loop. The process of finding the nearest target will iterate to add vertices and branches. 
+First, choose a target with index **u** as the first vertex to add in the tree. 
+Next, use _KDTree.query_ to list the targets in ascending order of distance to the first vertex. The nearest target will be the next vertex **a** to add in the tree. 
+The program will draw a line on the first plot between the first vertex **u** and the next vertex **a**, which is the branch of the tree.
+Add the next vertex **a** in the tree, let the variable **u** be **a** and end the first loop. The process of finding the nearest target will iterate to add vertices and branches. 
+When the variable **u** is iterating, if the distance between the last vertex and its nearest target is smaller than that between **u** and its nearest target, it will choose the nearest target of last vertex to be the next vertex **a** instead of the nearest target of **u**. 
 
 
