@@ -1,5 +1,5 @@
 # Taurus_Auriga
-Python scripts and observe scripts prepared for SMA project, 2021A-A010. 
+###### Python scripts and observe scripts prepared for SMA project, 2021A-A010. 
 The observations purpose is to constrain the spectral indices of 47 Class II protoplanetary disks in Taurus-Auriga star forming region. 
 The science targets were selected from Andrews & Williams (2005) by their flux densities to achieve > 10-sigma significance in < 2 hours observing time. <br /> <br />
 File 'Target.txt' lists the target name, flux density at 0.85 mm, uncertainty, flux density at 1.3 mm, uncertainty measured by Andrews & Williams (2005). 
@@ -17,5 +17,8 @@ We first divided the targets into 6 groups considering their relative positions 
 This process was done by our personal judgement, and we wrote the target names and numbers of scans of each group in a1-a6 and s1-s6, respectively. 
 Again, the cell plots the positions of targets but with different colors corresponding to different groups and the transparency corresponding to numbers of scans. <br />
 In the fourth to seventh cell, we used the KD-tree algorithm to construct the minimun spanning tree of the 47 targets by the seperation of their celestial coordinates. 
-The tree is constructed by the following step:
-First, choose a 
+The tree is constructed by the following steps: 
+First, choose a target with index ***u*** as the first vertex to add in the tree. 
+Then, use KDTree.query to list the targets in ascending order of distance to the first vertex. The nearest target will be the next vertex to add in the tree. 
+The 
+
