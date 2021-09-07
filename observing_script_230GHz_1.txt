@@ -1,0 +1,120 @@
+#!/usr/bin/perl -w
+{ BEGIN {$^W =0}
+#
+################## Script Header Info #####################
+#
+# Experiment Code: 2021A-A010
+# Experiment Title: A statistical study to constrain grain growth efficiency in protoplanetary disks
+# PI: Chia-Ying Chung
+# Contact Person: Chia-Ying Chung  
+# Email  : sharon0311chung@gmail.com  
+# Office : 886-2-3365-2200  
+# Home   : 886-918867241   
+# Array  : extended   
+#
+#
+############## SPECIAL INSTRUCTIONS ################
+#
+# none
+#
+################## Priming ################################
+#
+# observe -s FM_Tau -r 04:14:13.5943 -d 28:12:48.7763 -e 2000 -v 0
+# dopplerTrack -S FM_Tau -r 201 -l -s1 -f 0.0 -R B -r 233 -l -s1 -f 0.0
+#
+################## Pointing ###############################
+#
+# Pointing: At start and in middle of track
+# Syntax Example: point -i 60 -r 3 -L -l -t -Q
+#
+################## Source, Calibrator and Limits ##########
+#
+$inttime="15"; 
+$targ0="FM_Tau -r 04:14:13.5943 -d 28:12:48.7763 -e 2000 -v 0"; $ntarg0="21";
+$targ1="GK_Tau -r 04:33:34.5718 -d 24:21:05.527 -e 2000 -v 0"; $ntarg1="21";
+$targ2="IP_Tau -r 04:24:57.0924 -d 27:11:56.1153 -e 2000 -v 0"; $ntarg2="12";
+$targ3="CoKu_Tau_1 -r 04:18:51.487 -d 28:20:26.0964 -e 2000 -v 0"; $ntarg3="21";
+$targ4="04278+2253 -r 04:30:50.2913 -d 23:00:08.5211 -e 2000 -v 0"; $ntarg4="21";
+$targ5="Haro_6-39 -r 04:52:09.708 -d 30:37:45.02 -e 2000 -v 0"; $ntarg5="6";
+$targ6="CIDA-7 -r 04:42:21.0271 -d 25:20:33.9896 -e 2000 -v 0"; $ntarg6="7";
+$targ7="DS_Tau -r 04:47:48.6017 -d 29:25:10.8006 -e 2000 -v 0"; $ntarg7="4";
+$targ8="HO_Tau -r 04:35:20.2217 -d 22:32:14.291 -e 2000 -v 0"; $ntarg8="12";
+$targ9="FY_Tau -r 04:32:30.5864 -d 24:19:57.0152 -e 2000 -v 0"; $ntarg9="12";
+$targ10="HV_Tau -r 04:38:35.2962 -d 26:10:38.2981 -e 2000 -v 0"; $ntarg10="3";
+$targ11="FV_Tau -r 04:26:53.5421 -d 26:06:53.9302 -e 2000 -v 0"; $ntarg11="6";
+$targ12="DD_Tau -r 04:18:31.1378 -d 28:16:28.7496 -e 2000 -v 0"; $ntarg12="12";
+$targ13="DH_Tau -r 04:29:41.5604 -d 26:32:57.7926 -e 2000 -v 0"; $ntarg13="6";
+$targ14="CW_Tau -r 04:14:17.0141 -d 28:10:57.3792 -e 2000 -v 0"; $ntarg14="3";
+$targ15="CIDA-9 -r 05:05:22.8222 -d 25:31:30.533 -e 2000 -v 0"; $ntarg15="4";
+$targ16="SU_Aur -r 04:55:59.3919 -d 30:34:01.1108 -e 2000 -v 0"; $ntarg16="4";
+$targ17="V836_Tau -r 05:03:06.6024 -d 25:23:19.3298 -e 2000 -v 0"; $ntarg17="3";
+$targ18="RW_Aur -r 05:07:49.4595 -d 30:24:04.3365 -e 2000 -v 0"; $ntarg18="3";
+$targ19="DK_Tau -r 04:30:44.2484 -d 26:01:24.3913 -e 2000 -v 0"; $ntarg19="3";
+$targ20="DE_Tau -r 04:21:55.6476 -d 27:55:05.7489 -e 2000 -v 0"; $ntarg20="3";
+$targ21="UY_Aur -r 04:51:47.3955 -d 30:47:13.1369 -e 2000 -v 0"; $ntarg21="4";
+$targ22="FT_Tau -r 04:23:39.1976 -d 24:56:13.9012 -e 2000 -v 0"; $ntarg22="3";
+$targ23="BP_Tau -r 04:19:15.8448 -d 29:06:26.5108 -e 2000 -v 0"; $ntarg23="3";
+$targ24="CY_Tau -r 04:17:33.7393 -d 28:20:46.4013 -e 2000 -v 0"; $ntarg24="3";
+$targ25="AA_Tau -r 04:34:55.4264 -d 24:28:52.7028 -e 2000 -v 0"; $ntarg25="3";
+$targ26="V710_Tau -r 04:31:57.8052 -d 18:21:37.6651 -e 2000 -v 0"; $ntarg26="3";
+$targ27="GO_Tau -r 04:43:03.0818 -d 25:20:18.3851 -e 2000 -v 0"; $ntarg27="3";
+$targ28="UX_Tau -r 04:30:04.0077 -d 18:13:49.1926 -e 2000 -v 0"; $ntarg28="3";
+$targ29="IQ_Tau -r 04:29:51.564 -d 26:06:44.5188 -e 2000 -v 0"; $ntarg29="3";
+$targ30="DN_Tau -r 04:35:27.3847 -d 24:14:58.5765 -e 2000 -v 0"; $ntarg30="3";
+$targ31="DQ_Tau -r 04:46:53.063 -d 16:59:59.9234 -e 2000 -v 0"; $ntarg31="3";
+$targ32="DM_Tau -r 04:33:48.7468 -d 18:10:09.6808 -e 2000 -v 0"; $ntarg32="3";
+$targ33="Haro_6-37 -r 04:46:59.0936 -d 17:02:39.7335 -e 2000 -v 0"; $ntarg33="3";
+$targ34="DO_Tau -r 04:38:28.5955 -d 26:10:49.1308 -e 2000 -v 0"; $ntarg34="3";
+$targ35="CI_Tau -r 04:33:52.0247 -d 22:50:29.8208 -e 2000 -v 0"; $ntarg35="3";
+$targ36="AB_Aur -r 04:55:45.8509 -d 30:33:03.9077 -e 2000 -v 0"; $ntarg36="3";
+$targ37="LkCa_15 -r 04:39:17.8034 -d 22:21:03.1096 -e 2000 -v 0"; $ntarg37="3";
+$targ38="DL_Tau -r 04:33:39.0877 -d 25:20:37.8054 -e 2000 -v 0"; $ntarg38="3";
+$targ39="IC_2087_IR -r 04:39:55.7525 -d 25:45:01.6176 -e 2000 -v 0"; $ntarg39="3";
+$targ40="DR_Tau -r 04:47:06.221 -d 16:58:42.5916 -e 2000 -v 0"; $ntarg40="3";
+$targ41="RY_Tau -r 04:21:57.4199 -d 28:26:35.1233 -e 2000 -v 0"; $ntarg41="3";
+$targ42="UZ_Tau -r 04:32:43.0785 -d 25:52:30.6614 -e 2000 -v 0"; $ntarg42="3";
+$targ43="T_Tau -r 04:21:59.4452 -d 19:32:06.2029 -e 2000 -v 0"; $ntarg43="3";
+$targ44="V892_Tau -r 04:18:40.62 -d 28:19:15.1641 -e 2000 -v 0"; $ntarg44="3";
+$targ45="GM_Aur -r 04:55:10.9862 -d 30:21:58.985 -e 2000 -v 0"; $ntarg45="3";
+$targ46="04113+2758 -r 04:14:26.2777 -d 28:06:02.8472 -e 2000 -v 0"; $ntarg46="3";
+
+$cal0="0510+180"; $ncal0="6";
+$cal1="0418+380"; $ncal1="6";
+$flux0="Neptune"; $nflux0="20";
+$bpass0="3c84"; $nbpass0="120";
+$MINEL_TARG = 17; $MAXEL_TARG = 83;
+$MINEL_GAIN = 17; $MAXEL_GAIN = 83;
+$MINEL_FLUX = 17; $MAXEL_FLUX = 81;
+$MINEL_BPASS= 17; $MAXEL_BPASS= 87;
+$MINEL_CHECK= 19; 
+#
+################## Script Initialization ##################
+#
+do 'sma.pl';
+do 'sma_add.pl';
+checkANT();
+command("radio");
+command("integrate -t $inttime");
+$myPID=$$;
+command("project -r -p 'Chia-Ying Chung' -d '2021A-A010'");
+print "----- initialization done, starting script -----\n";
+#
+################## Science Script #########################
+#
+print "----- initial flux and bandpass calibration -----\n";
+if(!$restart){
+  &DoPass(bpass0,nbpass0);
+  &DoFlux(flux0,nflux0);
+}
+
+print "----- main science target observe loop -----\n";
+  &ObsLoop(cal1, targ0, targ14, targ46, targ24, targ12, targ44, targ23, cal1, targ3, targ41, targ20, targ2, targ22, targ11, cal1, cal0, targ11, targ13, targ29, targ19, targ42, targ38, targ1, targ25, cal0, targ37, targ35, targ4, targ43, targ28, targ26, targ32, targ31, targ33, targ40, cal0, targ9, targ8, targ30, targ34, targ10, targ39, targ6, targ27, cal0, targ6, targ6, targ7, targ21, targ5, targ45, targ36, targ16, targ18, targ15, targ17, cal0);
+
+
+print "----- final flux and bandpass calibration -----\n";
+  &DoFlux(flux0,nflux0);
+  &DoPass(bpass0,nbpass0);
+
+print "----- Congratulations!  This is the end of the script.  -----\n";}
+#
+################## File End ###############################
